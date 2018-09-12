@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dingli.comment.dao.OrderReportMapper">
+
+<select id="selectOrderReport" resultType="java.util.HashMap">
+    SELECT 
+	b.category as category,HOUR(o.create_time) as orderTime,count(1) as num
+	FROM
+	orders o,
+	business b
+	where o.business_id=b.id
+	AND
+	DATE_FORMAT(DATE_ADD(o.create_time,INTERVAL 4 DAY),'%e')
+	=DATE_FORMAT(NOW(),'%e')
+	GROUP BY b.category,HOUR(o.create_time)
+	ORDER BY o.create_time asc
+ </select>
+ 
+ </mapper>
