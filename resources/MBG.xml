@@ -9,7 +9,7 @@
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
         connectionURL="jdbc:mysql://localhost:3306/myxq"
         userId="root"
-        password="774500496">
+        password="*******">
     </jdbcConnection>
 
     <javaTypeResolver >
